@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single+Ink:wght@100..900&family=Bitcount+Single:wght@100..900&family=Dosis:wght@200..800&family=Henny+Penny&family=Tangerine:wght@400;700&display=swap');
+
+body{
+    font-family: "Bitcount Single", system-ui;
+    height: 100vh;
+    background-image: url('img/background.png');
+    padding: 10px;
+    text-align: center;
+    color: #cca466;
+    font-weight: 300;
+}
+
+input{
+    margin: 5px;
+}
+
+#portraitFuture{
+    width: auto;
+    height: 50vh;
+    background-image: url("img/futurePersColor.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#portraitPast{
+    width: auto;
+    height: 50vh;
+    background-image: url("img/pastPersColor.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.container.init{
+    display: grid;
+    grid-template-areas:
+    "headline headline"
+    "playerOne playerTwo"
+    "explanation explanation"
+    "btn btn";
+    place-items: center;
+}
+#playerOne{
+    grid-area: playerOne;
+    width: 50vw;
+    height: 60vh;
+}
+
+#playerTwo{
+    grid-area: playerTwo;
+    width: 50vw;
+    height: 60vh;
+}
+
+#headline{
+    grid-area: headline;
+}
+
+#explanation{
+    grid-area: explanation;
+}
+
+#start{
+    margin-top: 2rem;
+    grid-area: btn;
+}
+
+h1{
+    font-size: 3.5rem;
+    font-weight: 500;
+}
+
+#startButton{
+    padding: 14px 42px;
+    font-family: "Bitcount Single", system-ui;
+    font-size: 1.2rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    color: #2b1d0e;
+
+    background: linear-gradient(
+            135deg,
+            #CCA466,
+            #e0bf84
+    );
+
+    border: 2px solid #f3ddb3;
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    box-shadow:
+            0 0 12px rgba(204, 164, 102, 0.45),
+            0 4px 14px rgba(0, 0, 0, 0.4);
+
+    transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            background 0.3s ease;
+}
+
+#startButton:hover{
+    transform: translateY(-3px);
+
+    background: linear-gradient(
+            135deg,
+            #d8b277,
+            #f0cf97
+    );
+
+    box-shadow:
+            0 0 18px rgba(240, 207, 151, 0.7),
+            0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+#startButton:active{
+    transform: scale(0.97);
+}
+
+#startButton:focus{
+    outline: 2px solid #f3ddb3;
+    outline-offset: 4px;
+}
+
+.container.playing {
+    display: grid;
+
+    grid-template-areas:
+        "headline  headline headline"
+        "playerOne board playerTwo"
+        "info info info";
+}
+
+.board {
+    grid-area: board;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+
+    width: min(42vw, 480px);
+    aspect-ratio: 7 / 6;
+
+    gap: clamp(6px, 1.2vw, 12px);
+    padding: clamp(8px, 1.5vw, 16px);
+
+    background: lightgray;
+    border-radius: 16px;
+    box-sizing: border-box;
+}
+
+.cell {
+    background: #4a4a4a;
+    border-radius: 50%;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+img:not([src]), img[src=""] {
+    display: none;
+}
+
+#portraitFuture.playing{
+    width: auto;
+    height: 42vh;
+}
+
+#portraitPast.playing{
+    width: auto;
+    height: 42vh;
+}
+
+#playerOne.playing{
+    width: 27vw;
+    height: 42vh;
+}
+
+#playerTwo.playing{
+    width: 27vw;
+    height: 42vh;
+}
+
+#info{
+    grid-area: info;
+    margin-top: 2rem;
+}

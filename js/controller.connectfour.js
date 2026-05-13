@@ -1,4 +1,7 @@
 "use strict";
+import {connectfourModel} from "./model.connectfour.js";
+import {viewConsole} from "./view.console.js";
+import {viewPolished} from "./view.polished.js";
 
 /*******************************************************
  *     Connect Four - 100p
@@ -45,3 +48,31 @@
 //      the view (or views, if you decide to make a console-view).
 
 //TODO: Add EventListeners, to forward the user inputs to the model.
+
+export let connectfourController = {
+    init: function() {
+        document.addEventListener("click", (e) => {
+            if (e.target && e.target.id === "startButton") {
+                connectfourModel.start(document.getElementById("playerOneInput").value, document.getElementById("playerTwoInput").value);
+                viewPolished.createPlayScreen(connectfourModel.playerOneName, connectfourModel.playerTwoName);
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (Number(e.key) >= 1 && Number(e.key) <= 7) {
+                connectfourModel.addStone(e.key);
+            }
+            if (e.key === "r" || e.key === "R") {
+                if (connectfourModel.gameStatus === "Victory" || connectfourModel.gameStatus === "Draw") {
+                    connectfourModel.restart();
+                    viewPolished.init();
+                }
+            }
+        })
+        viewPolished.init()
+        viewPolished.registerEventListener()
+        viewConsole.init()
+    }
+
+}
+
+connectfourController.init();
